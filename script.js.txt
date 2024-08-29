@@ -1,0 +1,71 @@
+
+const products = [
+    { name: "Oversize T-Shirt", element: document.querySelector('[data-name="How So Oversize T-Shirt"]') },
+    { name: "T-Shirt", element: document.querySelector('[data-name="Chill T-Shirt"]') },
+    { name: "Check Shirt", element: document.querySelector('[data-name="Shirt"]') },
+    { name: "Boys Plain Shirt", element: document.querySelector('[data-name="AI Plain Shirt"]') },
+    { name: "Uni-Sex Shirt", element: document.querySelector('[data-name="Shirt"]') },
+    { name: "Stylish Jeans", element: document.querySelector('[data-name="Boys Jeasns"]') },
+    { name: "Stylish Girls Jeans", element: document.querySelector('[data-name="Girls Jeans"]') },
+    { name: "Classic Black Hoodie", element: document.querySelector('[data-name="Classic Black Hoodie"]') },
+    { name: "Stylish Boys Blazer", element: document.querySelector('[data-name="Stylish Boys Blazer"]') }
+];
+
+
+function showSuggestions() {
+    const input = document.getElementById('searchBar').value.toLowerCase();
+    const suggestions = document.getElementById('suggestions');
+    suggestions.innerHTML = '';
+    
+    if (input.length < 3) {
+        return; 
+    }
+
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(input)
+    );
+
+    filteredProducts.forEach(product => {
+        const li = document.createElement('li');
+        li.textContent = product.name;
+        li.addEventListener('click', () => {
+            document.getElementById('searchBar').value = product.name;
+            suggestions.innerHTML = '';
+           
+            products.forEach(p => {
+                p.element.style.display = p.name.toLowerCase().includes(input) ? 'block' : 'none';
+            });
+        });
+        suggestions.appendChild(li);
+    });
+
+ 
+    products.forEach(p => {
+        p.element.style.display = 'none';
+    });
+}
+
+
+let cartCount = 0;
+
+
+function addToCart() {
+    cartCount++;
+    updateCartCount();
+}
+
+
+function updateCartCount() {
+    const cartButton = document.getElementById('cartButton');
+    if (cartButton) {
+        cartButton.textContent = `Cart (${cartCount})`;
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', addToCart);
+    });
+});

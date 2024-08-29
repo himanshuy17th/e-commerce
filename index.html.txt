@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    
+        .company-name {
+            text-align: center;
+            font-family: 'Arial Black', sans-serif;
+            font-size: 36px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .company-name .england {
+            display: block;
+            font-family: 'Georgia', serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+       
+        body {
+            background-color: #f8c291; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+            position: relative;
+        }
+
+        #searchBar {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 300px;
+        }
+
+        #searchButton {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            margin-left: -1px; 
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        
+        #cartButton {
+            position: absolute;
+            right: -80px; 
+            top: 0;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+
+        #cartButton:hover {
+            background-color: #218838;
+        }
+
+       
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; 
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 300px; 
+            text-align: center;
+            position: relative;
+            background-color: #fff; 
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card .add-to-cart {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product-card .add-to-cart:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="company-name">
+            CLARKS
+            <span class="england">ENGLAND</span>
+        </div>
+
+        
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search for products..." onkeyup="showSuggestions()" autocomplete="off">
+            <button id="searchButton">Search</button>
+            <button id="cartButton">Cart (0)</button> 
+        </div>
+
+        <ul id="suggestions" class="suggestions-list"></ul>
+
+        <div class="product-grid" id="productGrid">
+            
+            <div class="product-card" data-name="How So Oversize T-Shirt">
+                <img src="https://martinvalen.com/16052-home_default/men-s-oversize-t-shirt-black.jpg" alt="Oversize T-Shirt">
+                <h2>Oversize T-Shirt</h2>
+                <p>Oversize T-shirt</p>
+                <p class="price">$699</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Chill T-Shirt">
+                <img src="https://i.pinimg.com/originals/f7/d6/16/f7d6164f24b5d0d99a6a2a1937a188ef.jpg" alt="T-Shirt">
+                <h2>T-Shirt</h2>
+                <p>Plain T-shirt</p>
+                <p class="price">$599</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Shirt">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.Xmm-ITKP5dDIuf13Bo5DNQHaHa&pid=Api&P=0&h=220" alt="Check Shirt">
+                <h2>Check Shirt</h2>
+                <p>Check Shirt</p>
+                <p class="price">$799</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="AI Plain Shirt">
+                <img src="https://tse2.mm.bing.net/th?id=OIP.5-Tq5rM6CO55HS6UV15PXgHaJ2&pid=Api&P=0&h=220" alt="Boys Plain Shirt">
+                <h2>Boys Plain Shirt</h2>
+                <p>Solid Shirt</p>
+                <p class="price">$799</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Shirt">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.kq_tATemns-NAWdPqJF97QHaHa&pid=Api&P=0&h=220" alt="Uni-Sex Shirt">
+                <h2>Uni-Sex Shirt</h2>
+                <p>Both for Men & Women</p>
+                <p class="price">$800</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Boys Jeasns">
+                <img src="https://martinvalen.com/5975-large_default/men-s-light-blue-jeans-with-rips.jpg" alt="Stylish Jeans">
+                <h2>Stylish Jeans</h2>
+                <p>Boys Jeans</p>
+                <p class="price">$800</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Girls Jeans">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.l5d1niWuZ-7JtEZwmv2sqgHaJ4&pid=Api&P=0&h=220" alt="Stylish Girls Jeans">
+                <h2>Stylish Girls Jeans</h2>
+                <p>Girls Jeans</p>
+                <p class="price">$800</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Classic Black Hoodie">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.ipFIM-Pe7H2LPWy6lIlATgHaHa&pid=Api&P=0&h=220" alt="Classic Black Hoodie">
+                <h2>Classic Black Hoodie</h2>
+                <p>Men Hoodie</p>
+                <p class="price">$899</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+
+            <div class="product-card" data-name="Stylish Boys Blazer">
+                <img src="https://i5.walmartimages.com/asr/0847b008-72cd-4d5d-b4a7-9f164dd1372f.4223c9e8704448f0cacd01d03f8cb5a7.jpeg" alt="Stylish Boys Blazer">
+                <h2>Stylish Boys Blazer</h2>
+                <p>Men Blazer</p>
+                <p class="price">$999</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
